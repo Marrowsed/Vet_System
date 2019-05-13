@@ -6,39 +6,6 @@ login varchar(20) NOT NULL UNIQUE,
 senha varchar(255) NOT NULL,
 PRIMARY KEY (id));
 
-CREATE TABLE produtos (
-id bigint(20) NOT NULL AUTO_INCREMENT,
-descricao varchar(120),
-quantidade int(11),
-valor double,
-PRIMARY KEY (id));
-
-CREATE TABLE carrinhos (
-id bigint(20) NOT NULL AUTO_INCREMENT,
-usuario_id bigint(20) NOT NULL,
-data date,
-PRIMARY KEY (id),
-FOREIGN KEY (usuario_id) REFERENCES usuarios (id) ON DELETE CASCADE);
-
-CREATE TABLE produtos_carrinhos (
-id bigint(20) NOT NULL AUTO_INCREMENT,
-carrinho_id bigint(20) NOT NULL,
-produto_id bigint(20) NOT NULL,
-Quantidade int(11),
-valor double,
-PRIMARY KEY (id),
-FOREIGN KEY (carrinho_id) REFERENCES carrinhos (id) ON DELETE CASCADE,
-FOREIGN KEY (produto_id) REFERENCES produtos (id) ON DELETE CASCADE);
-
---INSERIR USU¡RIO--
+--INSERIR USU√ÅRIO--
 insert into usuarios(nome, login, senha)
 values('Marcus', 'marrows', MD5('123'));
---INSERIR PRODUTO--
-insert into produtos(descricao, quantidade, valor)
-values('Notebook', 5, 1000);
-insert into produtos(descricao, quantidade, valor)
-values('Gabinete', 10, 500);
-insert into produtos(descricao, quantidade, valor)
-values('Monitor', 20, 100);
-insert into produtos(descricao, quantidade, valor)
-values('Teclado', 30, 50);
