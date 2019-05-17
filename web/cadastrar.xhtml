@@ -6,31 +6,34 @@
                 xmlns="http://www.w3.org/1999/xhtml">
 
     <ui:define name="title">
-        TESTE
+        CADASTRO
     </ui:define>
 
     <ui:define name="top">
-        SISTEMA SEM NOME
+     
     </ui:define>
 
     <ui:define name="content">
-        <h:form>
-                <h:panelGrid columns="3">
-                    <h:outputLabel value="Digite seu nome" for="nome"/>
+        <h:form styleClass="formst">
+                <h:panelGrid columns="1">
+                    <h:outputLabel value="Digite seu nome" for="nome" styleClass="outputs"/>
                     <h:inputText value="#{usuarioBean.usuario.nome}" label="nome" 
-                                 id="nome" required="true"/>
+                                 id="nome" required="true" styleClass="inputs"/>
                     <h:message for="nome" styleClass="erro"/>
-                    <h:outputLabel value="Digite seu login" for="login"/>
+                    <h:outputLabel value="Digite seu login" for="login" styleClass="outputs"/>
                     <h:inputText value="#{usuarioBean.usuario.login}" label="login" 
-                                 id="login" required="true"/>
+                                 id="login" required="true" styleClass="inputs"/>
                     <h:message for="login" styleClass="erro"/>
-                    <h:outputLabel value="Digite sua senha" for="senha"/>
+                    <h:outputLabel value="Digite sua senha" for="senha" styleClass="outputs"/>
                     <h:inputSecret value="#{usuarioBean.usuario.senha}" label="senha" 
-                                 id="senha" required="true"/>
+                                 id="senha" required="true" styleClass="inputs"/>
                     <h:message for="senha" styleClass="erro"/>                
                 </h:panelGrid>
-                <h:commandButton value="Cadastrar" action="#{usuarioBean.cadastrar}"/>
-                <h:commandButton value="Voltar" action="/index" immediate="true"/>
+            <h:panelGrid columns="2" styleClass="opcFormCad">
+                <h:commandButton value="Cadastrar" action="#{usuarioBean.cadastrar()}" styleClass="btnsFormCad"/>
+                <h:commandButton value="Voltar" action="/index" immediate="true" styleClass="btnsFormCad"/>
+            </h:panelGrid>
+                
             </h:form>
     </ui:define>
 

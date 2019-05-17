@@ -1,0 +1,87 @@
+@import url('https://fonts.googleapis.com/css?family=Monoton');
+@import url('https://fonts.googleapis.com/css?family=Righteous');
+
+
+#top2{
+    /*background-color: red;*/
+    display: flex;
+    margin-top: 1%;
+    margin-bottom: 1%;
+}
+
+#content2{
+    background-image: url("../resources/imagens/adorable-animal-blur-406014.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 45rem;
+    text-align: center;
+}
+
+.formBtns{
+    flex: 1;
+    
+}
+
+#top2 h1{
+    flex: 6;
+    border: none;
+    font-family: 'Righteous', cursive;
+    color: #560d0d;
+    margin-bottom: auto;
+    margin-top: auto;
+    font-size: 3em;
+}
+
+.homeBtnsForm:hover{
+    background-color: #185962;
+}
+
+.homeBtnsForm{
+    border: none;
+    color: white;
+    background-color: #103c42;
+    border: none;
+    border-radius: 20px;
+    padding: 8px 17px;
+    font-size: 1.3em;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+
+
+div#divContent span {
+    font-size:5em;
+    color: #85ef47;
+    font-family: 'Monoton', cursive;
+    display: block;
+    padding-top: 5%;
+}
+
+ div#divContent p {
+    font-size:1.7em;
+    font-weight: 100;
+    color: #103c42;
+    /*border-bottom: dotted 2px #103c42;*/
+    /*border: dotted 2px #103c42;*/
+    padding: 5px;
+    width: 88%;
+    margin-left: auto;
+    margin-right: auto;
+    font-family: 'Righteous', cursive;
+    /*box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);*/
+}
+
+#divContent{
+    border-bottom: solid 2px #85ef47;
+    width: 95%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#bottom{
+    margin-top: 2%;
+    font-weight: 100;
+    color:#560d0d;
+    font-family: 'Righteous', cursive;
+    font-size: 1.2em;
+}

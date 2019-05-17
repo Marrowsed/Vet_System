@@ -8,18 +8,22 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <h:outputStylesheet library="css" name="default.css"/>
         <h:outputStylesheet library="css" name="cssLayout.css"/>
+        <h:outputStylesheet library="css" name="forms.css"/>
         <title><ui:insert name="title">title</ui:insert></title>
     </h:head>
 
-    <h:body>
+    <h:body styleClass="bodyEstilo">
 
         <div id="top">
             <ui:insert name="top">Top</ui:insert>
+            <h1>QUINTA PET</h1>
         </div>
         <div>
-            <div id="content" class="center_content">
-                <ui:insert name="content">Content</ui:insert>
-            </div>
+            <center>
+                <div id="content" class="center_content">
+                    <ui:insert name="content">Content</ui:insert>
+                </div>
+            </center>
         </div>
         <div id="bottom">
             <ui:insert name="bottom">

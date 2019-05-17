@@ -1,0 +1,79 @@
+
+
+.formst{
+    margin-top: 10%;
+}
+
+.inputs{
+    border: none;
+    border-radius: 15px;
+    padding: 5px 8px;
+    font-size: 1em;
+    margin-left: 1%;
+    color: #185962;
+    font-weight: 100;
+    margin: 1% 0 5% 0;
+    font-family: sans-serif;
+    border: solid 1px #f1f1f1;
+    /*background-color: #a6ed8e;*/
+}
+
+.inputs:focus{
+     background-color: #f1f1f1;
+}
+
+.outputs{
+    font-size: 1.4em;
+    font-weight: lighter;
+    color: white;
+    padding-bottom: 10%;
+}
+
+.btnsForm {
+    padding: 5px;
+    color: white;
+    background-color: #a6ed8e;
+    border: none;
+    border-radius: 15px;
+    padding: 5px 8px;
+    font-size: 1.1em;
+    width: 60%;
+}
+
+.btnsForm:hover, .btnsFormCad:hover {
+    background-color: #185962;
+}
+
+/*bloco btns*/
+.opsBtns{
+    text-align: center;
+    width: 70%;
+}
+
+.btnCad{
+    color: #a6ed8e;
+    border: none;
+    border-top: solid 2px white;
+    font-family: sans-serif;
+    /*background-color: #a6ed8e;*/
+    background: none;
+    font-size: 1em;
+    margin-top: 5%;
+    width: 100%;
+    padding-top: 5%; 
+}
+
+.btnCad:hover{
+    color: white;
+}
+
+.btnsFormCad{
+    border: none;
+    padding: 5px;
+    color: white;
+    background-color: #a6ed8e;
+    border: none;
+    border-radius: 15px;
+    padding: 6px 9px;
+    font-size: 1em;
+}
