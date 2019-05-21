@@ -3,19 +3,21 @@
 <ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
                 template="./_templateHome.xhtml"
                 xmlns:h="http://xmlns.jcp.org/jsf/html">
+    
+    <ui:define name="title">Tela Inicial</ui:define>
 
     <ui:define name="top">
         <h:form styleClass="formBtns">
             <h:panelGrid columns="2" styleClass="homeOpsBtns">
                 <h:commandButton value="Entrar" action="/index" styleClass="homeBtnsForm"/>
-                <h:commandButton value="Cadastre-se" action="/cadastrar" immediate="true" styleClass="homeBtnsForm"/>
+                <h:commandButton value="Cadastre-se" action="/cadastrar_user" immediate="true" styleClass="homeBtnsForm"/>
             </h:panelGrid>     
         </h:form>
         
     </ui:define>
 
     <ui:define name="content">
-        
+
     </ui:define>
     
 

@@ -1,0 +1,51 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="./_template.xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:define name="title">
+        Cadastro de Usuário
+    </ui:define>
+
+    <ui:define name="top">
+     
+    </ui:define>
+
+    <ui:define name="content">
+        <h:form styleClass="formst">
+                <h:panelGrid columns="1">
+                    <h:outputLabel value="Digite seu nome" for="nome" styleClass="outputs"/>
+                    <h:inputText value="#{clienteBean.cliente.nome}" label="nome" 
+                                 id="nome" required="true" styleClass="inputs"/>
+                    <h:message for="nome" styleClass="erro"/>
+                    <h:outputLabel value="Digite seu cpf" for="cpf" styleClass="outputs"/>
+                    <h:inputText value="#{clienteBean.cliente.cpf}" label="cpf" 
+                                 id="cpf" required="true" styleClass="inputs"/>
+                    <h:message for="cpf" styleClass="erro"/>
+                    <h:outputLabel value="Digite seu endereço" for="endereco" styleClass="outputs"/>
+                    <h:inputText value="#{clienteBean.cliente.endereco}" label="endereco" 
+                                 id="endereco" required="true" styleClass="inputs"/>
+                    <h:message for="endereco" styleClass="erro"/>
+                    <h:outputLabel value="Digite seu telefone" for="telefone" styleClass="outputs" />
+                    <h:inputText value="#{clienteBean.cliente.telefone}" label="telefone" 
+                                 id="telefone" required="true" styleClass="inputs">
+                                 
+                    </h:inputText>
+                    <h:message for="telefone" styleClass="erro"/>
+                    <h:outputLabel value="Digite seu email" for="email" styleClass="outputs"/>
+                    <h:inputText value="#{clienteBean.cliente.email}" label="email" 
+                                 id="email" required="true" styleClass="inputs"/>
+                    <h:message for="email" styleClass="erro"/>                
+                </h:panelGrid>
+            <h:panelGrid columns="2" styleClass="opcFormCad">
+                <h:commandButton value="Cadastrar" action="#{clienteBean.cadastrar()}" styleClass="btnsFormCad"/>
+                <h:commandButton value="Voltar" action="#" immediate="true" styleClass="btnsFormCad"/>
+            </h:panelGrid>
+                
+            </h:form>
+    </ui:define>
+
+</ui:composition>

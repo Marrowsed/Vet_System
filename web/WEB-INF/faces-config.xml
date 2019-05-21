@@ -8,5 +8,10 @@
             <default-locale>pt-BR</default-locale>
             <supported-locale>en-US</supported-locale>
         </locale-config>
+    <converter>
+            <converter-id>phoneConverter</converter-id>
+            <converter-class>converter.PhoneConverter</converter-class>
+    </converter>
     </application>
+    
 </faces-config>
