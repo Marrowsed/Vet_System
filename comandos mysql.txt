@@ -25,13 +25,12 @@ primary key (id),
 FOREIGN KEY (cliente_id) REFERENCES clientes (id) ON DELETE CASCADE);
 
 create table atendimentos(
+id bigint(20) NOT NULL AUTO_INCREMENT,
 data date not null,
 cliente_id bigint(20) not null,
 animal_id bigint(20) not null,
 observacao varchar(120) not null,
+PRIMARY KEY (id),
 FOREIGN KEY (cliente_id) REFERENCES clientes (id) ON DELETE CASCADE,
 FOREIGN KEY (animal_id) REFERENCES animals (id) ON DELETE CASCADE);
-<<<<<<< Upstream, based on origin/master
 
-=======
->>>>>>> 3c2250b Atualização de CSS
