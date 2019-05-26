@@ -8,7 +8,7 @@ import java.util.logging.Logger;
 
 
 public class ConnectionFactory {
-    private static final String DATABASE_URL = "jdbc:mysql://localhost/quintapet";
+    private static final String DATABASE_URL = "jdbc:mysql://localhost/vetsystem";
     private static final String DATABASE_USER = "root";
     private static final String DATABASE_PASSWORD = "root";
     
