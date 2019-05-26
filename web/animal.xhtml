@@ -8,10 +8,10 @@
 
     <ui:define name="content">
         <h:form>
-            <h:inputText value="#{animalBean.animal.nome}" p:placeholder="nome animal" id="nome"/>
+            <h:inputText value="#{animalBean.animal.nome}" p:placeholder="Nome do animal" id="nome"/>
             <h:commandButton value="Consultar" action="#{animalBean.consultar()}" styleClass="btnConsultar"/>
 
-            <h:dataTable value="#{animalBean.animais}" var="a"          
+            <h:dataTable value="#{animalBean.animals}" var="a"  
                          styleClass="tabela" captionClass="tabelaCaption" 
                          headerClass="tabelaHeader" 
                          rowClasses="linhaPar, linhaImpar">

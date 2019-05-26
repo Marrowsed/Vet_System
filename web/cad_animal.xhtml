@@ -2,19 +2,41 @@
 <!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
                 template="./_templateUserLogado.xhtml"
-                xmlns:h="http://xmlns.jcp.org/jsf/html">
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <ui:define name="content">
-        <h:form styleClass="formst">
+            <h:form styleClass="formst">
                 <h:panelGrid columns="1">
-                    <!--COLOCAR FORMULÁRIO DO CADASTRO ANIMAL AQUI-->               
+                    <h:outputLabel value="Digite o nome do Animal" for="nome" styleClass="outputs"/>
+                    <h:inputText value="#{animalBean.animal.nome}" label="nome" 
+                                 id="nome" required="true" styleClass="inputs"/>
+                    <h:message for="nome" styleClass="erro"/>
+                    <h:outputLabel value="Selecione o cliente" for="cliente" styleClass="outputs" />
+                    <h:selectOneMenu id="clientes" value="#{clienteBean.cliente.id}" >
+                        <f:selectItem itemLabel="Selecione um cliente" itemValue="" noSelectionOption="true" />
+                        <f:selectItems value="#{clienteBean.listaClientes()}"  />
+                    </h:selectOneMenu>
+                    <h:outputLabel value="Digite a espécie" for="especie" styleClass="outputs"/>
+                    <h:inputText value="#{animalBean.animal.especie}" label="especie" 
+                                 id="endereco" required="true" styleClass="inputs"/>
+                    <h:message for="especie" styleClass="erro"/>
+                    <h:outputLabel value="Digite a raça" for="raca" styleClass="outputs" />
+                    <h:inputText value="#{animalBean.animal.raca}" label="raca" 
+                                 id="raca" required="true" styleClass="inputs">                                
+                    </h:inputText>
+                    <h:message for="raca" styleClass="erro"/>
+                    <h:outputLabel value="Digite a data de nascimento" for="nascimento" styleClass="outputs"/>
+                    <h:inputText value="#{animalBean.animal.nascimento}" label="nascimento" 
+                                 id="nascimento" required="true" styleClass="inputs"/>
+                    <h:message for="nascimento" styleClass="erro"/>                
                 </h:panelGrid>
             <h:panelGrid columns="2" styleClass="opcFormCad">
-                <h:commandButton value="Cadastrar" action="#{clienteBean.cadastrar()}" styleClass="btnsFormCad"/>
-                <h:commandButton value="Voltar" action="/animal" immediate="true" styleClass="btnsFormCad"/>
+                <h:commandButton value="Cadastrar" action="#{animalBean.cadastrar()}" styleClass="btnsFormCad"/>
+                <h:commandButton value="Voltar" action="/home" immediate="true" styleClass="btnsFormCad"/>
             </h:panelGrid>
                 
-        </h:form>
+            </h:form>           
     </ui:define>
 
 </ui:composition>

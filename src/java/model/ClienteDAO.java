@@ -140,5 +140,5 @@ public class ClienteDAO implements DAO {
         } catch (SQLException ex) {
             throw ex;
         }
-    }  
+    }
 }

@@ -3,11 +3,14 @@ package model;
 import java.io.Serializable;
 import java.util.Objects;
 import javax.enterprise.context.Dependent;
+import org.hibernate.validator.constraints.Email;
 
 @Dependent
 public class Cliente implements Serializable {
     private Long id;
-    private String nome, cpf, endereco, telefone, email;
+    private String nome, cpf, endereco, telefone;
+    @Email
+    private String email;
 
     public Cliente() {
     }
@@ -68,8 +71,6 @@ public class Cliente implements Serializable {
     public void setEmail(String email) {
         this.email = email;
     }
-
-
 
     @Override
     public int hashCode() {
