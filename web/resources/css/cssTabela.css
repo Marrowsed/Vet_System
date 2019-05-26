@@ -1,0 +1,33 @@
+
+.tabela{
+    margin-top: 5%;
+    margin-bottom:5%;
+    border: thin solid #002f35;
+    background-color: #002f35;
+}
+
+.tabelaHeader {
+    text-align: center;
+    font-style: italic;
+    color: Snow;
+    background: #002f35;
+}
+
+.tabelaCaption {
+    text-align: center;
+    font-style: italic;
+    color: Snow;
+    background: Teal;
+}
+
+.linhaPar {
+    text-align: left;
+    background: #f9feff;
+    padding: 1px;
+}
+
+.linhaImpar {
+    text-align: left;
+    background: #dedede;
+    padding: 1px;
+}

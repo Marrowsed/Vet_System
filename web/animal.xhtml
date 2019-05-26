@@ -1,0 +1,64 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="./_templateUserLogado.xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:p="http://xmlns.jcp.org/jsf/passthrough">
+
+    <ui:define name="content">
+        <h:form>
+            <h:inputText value="#{animalBean.animal.nome}" p:placeholder="nome animal" id="nome"/>
+            <h:commandButton value="Consultar" action="#{animalBean.consultar()}" styleClass="btnConsultar"/>
+
+            <h:dataTable value="#{animalBean.animais}" var="a"          
+                         styleClass="tabela" captionClass="tabelaCaption" 
+                         headerClass="tabelaHeader" 
+                         rowClasses="linhaPar, linhaImpar">
+                <f:facet name="caption">Animais</f:facet>
+                <h:column>
+                    <f:facet name="header">Id</f:facet>
+                    <h:commandLink value="#{a.id}" action="#"/>                
+                </h:column>
+                
+                <h:column>
+                    <f:facet name="header">Nome</f:facet>
+                    <h:outputText value="#{a.nome}"/>
+                </h:column>
+                
+                <h:column>
+                    <f:facet name="header">Cliente</f:facet>
+                    <h:outputText value="#{a.cliente}"/>
+                </h:column>
+                
+                <h:column>
+                    <f:facet name="header">Especie</f:facet>
+                    <h:outputText value="#{a.especie}"/>
+                </h:column>
+                
+                <h:column>
+                    <f:facet name="header">Raça</f:facet>
+                    <h:outputText value="#{a.raca}"/>
+                </h:column>
+                
+                <h:column>
+                    <f:facet name="header">Nascimento</f:facet>
+                    <h:outputText value="#{a.nascimento}">
+                        <f:convertDateTime type="date" pattern="dd/MM/yyyy" timeZone="GMT-3"/>
+                    </h:outputText>
+                </h:column>
+               
+                <h:column>
+                    <f:facet name="header">Excluir</f:facet>
+                    <h:commandButton value="Excluir" action="#{animalBean.exluir(a)}" 
+                                     onclick="return confirm('Confirma a exclusão');"/>
+                </h:column>
+            </h:dataTable>
+            
+            <h:panelGrid columns="2">
+                <h:commandButton value="Adicionar Animal" action="/cad_animal" immediate="true" styleClass="btnsFormCad"/>
+            </h:panelGrid>
+        </h:form>
+    </ui:define>
+
+</ui:composition>

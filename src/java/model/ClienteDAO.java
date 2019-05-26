@@ -41,6 +41,7 @@ public class ClienteDAO implements DAO {
         return obj;
     }
 
+
     @Override
     public List<Object> listar() throws SQLException {
         List<Object> clientes = new ArrayList<>();

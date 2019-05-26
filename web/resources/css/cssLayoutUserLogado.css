@@ -1,0 +1,94 @@
+
+#top {
+    position: relative;
+    /*background-color: #036fab;*/
+    color: white;
+    padding: 5px;
+    margin: 0px 0px 10px 0px;
+    border-bottom: dotted 4px #004a2f;
+}
+
+#bottom {
+    padding: 5px;
+    margin: 10px 0px 0px 0px;
+    position:fixed;
+    bottom: 0;
+    width: 98%;
+}
+
+#left {
+    float: left;
+    background-color: #eeeeee;
+    padding: 5px;
+    width: 150px;
+    height: 550px;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+
+#right {
+    float: right;
+    background-color: #ece3a5;
+    padding: 5px;
+    width: 150px;
+}
+
+.center_content {
+    position: relative;
+    background-color: #e1f7eb;
+    padding: 5px;
+}
+
+.left_content {
+    background-color: #f1fbf5;
+    padding: 5px;
+    margin-left: 170px;
+}
+
+.right_content {
+    background-color: #dddddd;
+    padding: 5px;
+    margin: 0px 170px 0px 170px;
+}
+
+#top a:link, #top a:visited {
+  color: white;
+  font-weight : bold;
+  text-decoration: none;
+}
+
+#top a:link:hover, #top a:visited:hover  {
+  color: black;
+  font-weight : bold;
+  text-decoration : underline;
+}
+
+.linkMenu{
+    color:red;
+}
+
+.btnsFormCad {
+    padding: 5px;
+    color: white;
+    background-color: #002f35;
+    border: none;
+    border-radius: 15px;
+    padding: 5px 8px;
+    font-size: 1.1em;
+    width: 60%;
+}
+
+.btnsFormCad:hover, .btnConsultar:hover {
+    background-color: #185962;
+}
+
+.btnConsultar{
+    padding: 5px;
+    color: white;
+    background-color: #002f35;
+    border: none;
+    border-radius: 15px;
+    padding: 5px 8px;
+    font-size: 1.1em;
+    width: 8%;
+    margin-left: 1%;
+}
