@@ -12,23 +12,29 @@
                     <h:inputText value="#{animalBean.animal.nome}" label="nome" 
                                  id="nome" required="true" styleClass="inputs"/>
                     <h:message for="nome" styleClass="erro"/>
+                    
                     <h:outputLabel value="Selecione o cliente" for="cliente" styleClass="outputs" />
-                    <h:selectOneMenu id="clientes" value="#{clienteBean.cliente.id}" >
+                    <h:selectOneMenu id="clientes" value="#{animalBean.animal.cliente.id}" >
                         <f:selectItem itemLabel="Selecione um cliente" itemValue="" noSelectionOption="true" />
-                        <f:selectItems value="#{clienteBean.listaClientes()}"  />
+                        <f:selectItems value="#{clienteBean.listaClientes}"  />
                     </h:selectOneMenu>
+                    
                     <h:outputLabel value="Digite a espécie" for="especie" styleClass="outputs"/>
                     <h:inputText value="#{animalBean.animal.especie}" label="especie" 
                                  id="endereco" required="true" styleClass="inputs"/>
                     <h:message for="especie" styleClass="erro"/>
+                    
                     <h:outputLabel value="Digite a raça" for="raca" styleClass="outputs" />
                     <h:inputText value="#{animalBean.animal.raca}" label="raca" 
                                  id="raca" required="true" styleClass="inputs">                                
                     </h:inputText>
                     <h:message for="raca" styleClass="erro"/>
+                    
                     <h:outputLabel value="Digite a data de nascimento" for="nascimento" styleClass="outputs"/>
                     <h:inputText value="#{animalBean.animal.nascimento}" label="nascimento" 
-                                 id="nascimento" required="true" styleClass="inputs"/>
+                                 id="nascimento" required="true" styleClass="inputs">
+                        <f:convertDateTime pattern="yyyy-MM-dd"/>
+                    </h:inputText>
                     <h:message for="nascimento" styleClass="erro"/>                
                 </h:panelGrid>
             <h:panelGrid columns="2" styleClass="opcFormCad">

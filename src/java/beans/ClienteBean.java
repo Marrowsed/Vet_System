@@ -6,6 +6,7 @@ import java.io.Serializable;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import javax.faces.model.SelectItem;
 import javax.inject.Inject;
 import model.Cliente;
 import model.ClienteDAO;
@@ -56,6 +57,16 @@ public class ClienteBean implements Serializable {
         ClienteDAO cdao = new ClienteDAO();
         cdao.excluir(c.getId());        
         clientes.remove(c);
+    }
+    
+    public List<SelectItem> getListaClientes() throws SQLException {
+        List<SelectItem> lista = new ArrayList<>();
+        ClienteDAO cdao = new ClienteDAO();
+        for (Object o : cdao.listar()) {
+            Cliente c = (Cliente) o;
+            lista.add(new SelectItem(c.getId(), c.getNome()));
+        }
+        return lista;
     }
     
 }

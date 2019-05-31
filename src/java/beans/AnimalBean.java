@@ -4,7 +4,10 @@ import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
+import javax.faces.model.SelectItem;
 import javax.inject.Inject;
 import model.Animal;
 import model.AnimalDAO;
@@ -18,11 +21,14 @@ public class AnimalBean implements Serializable {
 
     @Inject
     private Animal animal;
+    @Inject
     private Cliente cliente;
     private List<Animal> animals;
     private List<Cliente> clientes;
+    private boolean ListaAnimaisDesabilitado;
 
     public AnimalBean() {
+        ListaAnimaisDesabilitado = true;
     }
 
     public Animal getAnimal() {
@@ -56,6 +62,10 @@ public class AnimalBean implements Serializable {
     public void setClientes(List<Cliente> clientes) {
         this.clientes = clientes;
     }
+
+    public void setListaAnimaisDesabilitado(boolean ListaAnimaisDesabilitado) {
+        this.ListaAnimaisDesabilitado = ListaAnimaisDesabilitado;
+    }
     
     public String cadastrar() throws SQLException {
         AnimalDAO adao = new AnimalDAO();
@@ -77,5 +87,25 @@ public class AnimalBean implements Serializable {
         animals.remove(a);
     }
     
+    public List<SelectItem> getListaAnimais() throws SQLException {
+        List<SelectItem> lista = new ArrayList<>();
+        AnimalDAO adao = new AnimalDAO();
+        for (Object o : adao.listar()) {
+            Animal a = (Animal) o;
+            System.out.println("cliente: " + a.getCliente());
+            System.out.println("cliente: " + cliente);
+
+            if (Objects.equals(a.getCliente().getId(), cliente.getId()))
+                lista.add(new SelectItem(a.getId(), a.getNome()));
+        }
+        return lista;
+    }
     
+    public boolean isListaAnimaisDesabilitado() {
+        return ListaAnimaisDesabilitado;
+    }
+
+    public void habilita() {
+        ListaAnimaisDesabilitado = false;
+    }
 }

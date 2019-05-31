@@ -88,5 +88,11 @@ public class Cliente implements Serializable {
         final Cliente other = (Cliente) obj;
         return Objects.equals(this.id, other.id);
     }
+
+    @Override
+    public String toString() {
+        return "Cliente{" + "id=" + id + '}';
+    }
+    
     
 }

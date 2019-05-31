@@ -13,6 +13,8 @@ public class Atendimento implements Serializable {
     @Future
     private Date data;
     private String observacao;
+    private Cliente cliente;
+    private Animal animal;
 
     public Atendimento() {
     }
@@ -45,5 +47,23 @@ public class Atendimento implements Serializable {
     public void setObservacao(String observacao) {
         this.observacao = observacao;
     }
+
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
+    }
+
+    public Animal getAnimal() {
+        return animal;
+    }
+
+    public void setAnimal(Animal animal) {
+        this.animal = animal;
+    }
+    
+    
 
 }

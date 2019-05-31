@@ -11,8 +11,8 @@ import java.util.List;
 
 
 public class AnimalDAO implements DAO {
-    private static final String SQL_INSERIR_ANIMAL = "insert into animals (nome, especie, raca, nascimento) values(?,?,?,?)";
-    private static final String SQL_LISTAR_ANIMALS = "select * from animals order by nome";
+    private static final String SQL_INSERIR_ANIMAL = "insert into animals (nome, especie, raca, nascimento, cliente_id) values(?,?,?,?,?)";
+    private static final String SQL_LISTAR_ANIMALS = "select * from animals as a left join clientes as c on a.cliente_id = a.id order by a.nome";
     private static final String SQL_CONSULTAR_ANIMAL = "select * from animal where nome like ? order by nome";
     private static final String SQL_EXCLUIR_ANIMAL = "delete from animal where id = ?";
     private static final String SQL_ALTERAR_ANIMAL = "update animals set nome=?, especie=?, raca=?, nascimento=? where id=?";
@@ -29,8 +29,14 @@ public class AnimalDAO implements DAO {
                 stmt.setString(1, animal.getNome());
                 stmt.setString(2, animal.getEspecie());
                 stmt.setString(3, animal.getRaca());
-                stmt.setDate(4, (Date) animal.getNascimento());
-                animal.setId(new Long(stmt.executeUpdate()));
+                stmt.setDate(4, new java.sql.Date(animal.getNascimento().getTime()));
+                stmt.setLong(5, animal.getCliente().getId());
+                stmt.executeUpdate();
+                ResultSet rs = stmt.getGeneratedKeys();
+                if (rs != null && rs.next()) {                   
+                    animal.setId(rs.getLong(1));
+                    rs.close();
+                }
                 stmt.close();
             } finally {
                 connection.close();
@@ -57,6 +63,8 @@ public class AnimalDAO implements DAO {
                     a.setEspecie(rs.getString("especie"));
                     a.setRaca(rs.getString("raca"));
                     a.setNascimento(rs.getDate("nascimento"));
+                    a.setCliente(new Cliente());
+                    a.getCliente().setId(rs.getLong("cliente_id"));
                     animals.add(a);
                 }
                 stmt.close();
@@ -127,7 +135,7 @@ public class AnimalDAO implements DAO {
                 stmt.setString(1, animal.getNome());
                 stmt.setString(2, animal.getEspecie());
                 stmt.setString(3, animal.getRaca());
-                stmt.setDate(4, (Date) animal.getNascimento());
+                stmt.setDate(4, new java.sql.Date(animal.getNascimento().getTime()));
                 stmt.execute();
                 stmt.close();
             } finally {

@@ -3,6 +3,7 @@ package model;
 import java.io.Serializable;
 import java.util.Date;
 import javax.enterprise.context.Dependent;
+import javax.inject.Inject;
 import javax.validation.constraints.Past;
 
 
@@ -12,6 +13,7 @@ public class Animal implements Serializable {
     private String nome, especie, raca;
     @Past
     private Date nascimento;
+    @Inject
     private Cliente cliente;
 
     public Animal() {
