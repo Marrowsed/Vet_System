@@ -92,9 +92,6 @@ public class AnimalBean implements Serializable {
         AnimalDAO adao = new AnimalDAO();
         for (Object o : adao.listar()) {
             Animal a = (Animal) o;
-            System.out.println("cliente: " + a.getCliente());
-            System.out.println("cliente: " + cliente);
-
             if (Objects.equals(a.getCliente().getId(), cliente.getId()))
                 lista.add(new SelectItem(a.getId(), a.getNome()));
         }
