@@ -11,7 +11,7 @@ import java.util.List;
 
 
 public class AtendimentoDAO implements DAO {
-    private static final String SQL_INSERIR_ATENDIMENTO = "insert into atendimentos (data, observacao) values(?,?)";
+    private static final String SQL_INSERIR_ATENDIMENTO = "insert into atendimentos (data, observacao, cliente_id, animal_id) values(?,?,?,?)";
     private static final String SQL_LISTAR_ATENDIMENTOS = "select * from atendimentos order by data";
     private static final String SQL_CONSULTAR_ATENDIMENTO = "select * from atendimento where data like ? order by data";
     private static final String SQL_EXCLUIR_ATENDIMENTO = "delete from atendimento where id = ?";
@@ -26,9 +26,16 @@ public class AtendimentoDAO implements DAO {
             connection = ConnectionFactory.getConnection();
             try {
                 PreparedStatement stmt = connection.prepareStatement(SQL_INSERIR_ATENDIMENTO, Statement.RETURN_GENERATED_KEYS);
-                stmt.setDate(1, (Date) atendimento.getData());
+                stmt.setDate(1, new java.sql.Date(atendimento.getData().getTime()));
                 stmt.setString(2, atendimento.getObservacao());
-                atendimento.setId(new Long(stmt.executeUpdate()));
+                stmt.setLong(3, atendimento.getCliente().getId());
+                stmt.setLong(4, atendimento.getAnimal().getId());
+                stmt.executeUpdate();
+                ResultSet rs = stmt.getGeneratedKeys();
+                if (rs != null && rs.next()) {                   
+                    atendimento.setId(rs.getLong(1));
+                    rs.close();
+                }
                 stmt.close();
             } finally {
                 connection.close();
@@ -118,7 +125,7 @@ public class AtendimentoDAO implements DAO {
             connection = ConnectionFactory.getConnection();
             try {
                 PreparedStatement stmt = connection.prepareStatement(SQL_ALTERAR_ATENDIMENTO);
-                stmt.setDate(1, (Date) atendimento.getData());
+                stmt.setDate(1, new java.sql.Date(atendimento.getData().getTime()));
                 stmt.setString(2, atendimento.getObservacao());
                 stmt.execute();
                 stmt.close();
