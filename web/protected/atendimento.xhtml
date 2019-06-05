@@ -12,7 +12,7 @@
             <h:inputText value="#{animalBean.animal.nome}" p:placeholder="nome animal" id="nome"/>
             <h:commandButton value="Consultar" action="#{animalBean.consultar()}" styleClass="btnConsultar"/>
       
-            <h:dataTable value="#{atendimentoBean.atendimento}" var="atd"          
+            <h:dataTable value="#{lista.atendimentos}" var="atd"          
                          styleClass="tabela" captionClass="tabelaCaption" 
                          headerClass="tabelaHeader" 
                          rowClasses="linhaPar, linhaImpar">

@@ -11,14 +11,14 @@
             <h:inputText value="#{clienteBean.cliente.nome}" p:placeholder="nome cliente" id="nome"/>
             <h:commandButton value="Consultar" action="#{clienteBean.consultar()}" styleClass="btnConsultar"/>
 
-            <h:dataTable value="#{clienteBean.clientes}" var="c"          
+            <h:dataTable value="#{lista.clientes}" var="c"          
                          styleClass="tabela" captionClass="tabelaCaption" 
                          headerClass="tabelaHeader" 
                          rowClasses="linhaPar, linhaImpar">
                 <f:facet name="caption">Clientes</f:facet>
                 <h:column>
                     <f:facet name="header">Id</f:facet>
-                    <h:commandLink value="#{c.id}" action="#"/>                
+                    <h:commandLink value="#{c.id}"/>                
                 </h:column>
                 
                 <h:column>

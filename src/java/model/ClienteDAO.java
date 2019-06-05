@@ -12,8 +12,8 @@ import java.util.List;
 public class ClienteDAO implements DAO {
     private static final String SQL_INSERIR_CLIENTE = "insert into clientes (nome, cpf, endereco, telefone, email) values(?,?,?,?,?)";
     private static final String SQL_LISTAR_CLIENTES = "select * from clientes order by nome";
-    private static final String SQL_CONSULTAR_CLIENTE = "select * from cliente where nome like ? order by nome";
-    private static final String SQL_EXCLUIR_CLIENTE = "delete from cliente where id = ?";
+    private static final String SQL_CONSULTAR_CLIENTE = "select * from clientes where nome like ? order by nome";
+    private static final String SQL_EXCLUIR_CLIENTE = "delete from clientes where id = ?";
     private static final String SQL_ALTERAR_CLIENTE = "update clientes set nome=?, cpf=?, endereco=?, telefone=?, email=? where id=?";
     
     private Connection connection;
