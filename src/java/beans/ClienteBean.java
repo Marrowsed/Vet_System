@@ -43,7 +43,7 @@ public class ClienteBean implements Serializable {
         ClienteDAO cdao = new ClienteDAO();
         cdao.adicionar(cliente);
         cliente = new Cliente();
-        return "/cliente";
+        return "/proteced/cliente";
     }
     
     public String consultar() throws SQLException {

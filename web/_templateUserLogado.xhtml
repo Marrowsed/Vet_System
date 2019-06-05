@@ -19,8 +19,8 @@
                 <h:panelGrid columns="3">
                     <h:graphicImage library="imagens" 
                                 name="logo.png" styleClass="center_block"/>
-                    <h:outputText value="Olá, #" styleClass="saudacaoTop"/>
-                    <h:form><h:commandLink value="Sair" action="#" styleClass="linkMenu"/></h:form>
+                    <h:outputText value="Olá, #{usuarioBean.usuario.nome}" styleClass="saudacaoTop"/>
+                    <h:form><h:commandLink value="Sair" action="/index" styleClass="linkMenu"/></h:form>
                 </h:panelGrid>
             </ui:insert>
         </div>

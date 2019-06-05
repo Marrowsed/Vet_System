@@ -1,0 +1,49 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="./_templateUserLogado.xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:define name="content">
+        <h:form styleClass="formst">
+            
+            
+            <h:panelGrid columns="1">    
+                    <h:outputLabel value="Data" for="data" styleClass="outputs"/>
+                    <h:inputText value="#{atendimentoBean.atendimento.data}" label="data" 
+                                 id="data" required="true" styleClass="inputs">
+                        <f:convertDateTime pattern="yyyy-MM-dd"/>
+                    </h:inputText>
+                    <h:message for="data" styleClass="erro"/>
+                    
+                    <h:selectOneMenu id="clientes" value="#{animalBean.cliente.id}" >
+                        <f:selectItem itemLabel="Selecione um cliente" itemValue="" noSelectionOption="true" />
+                        <f:selectItems value="#{clienteBean.listaClientes}"  />
+                        <f:ajax render="animais" listener="#{animalBean.habilita}"/>
+                    </h:selectOneMenu>
+                    
+                    <h:selectOneMenu id="animais" value="#{animalBean.animal.id}" 
+                                     disabled="#{animalBean.listaAnimaisDesabilitado}">
+                        <f:selectItem itemLabel="Selecione o animal" itemValue="" noSelectionOption="true" />
+                        <f:selectItems value="#{animalBean.listaAnimais}"/>
+                    </h:selectOneMenu>
+                    
+                    <h:outputLabel value="Observações" for="obs" styleClass="outputs"/>
+                    <h:inputText value="#{atendimentoBean.atendimento.observacao}" label="obs" 
+                                 id="obs" required="true" styleClass="inputs"/>
+                    <h:message for="endereco" styleClass="erro"/>
+                       
+            </h:panelGrid>
+            
+            <h:panelGrid columns="2" styleClass="opcFormCad">
+                <h:commandButton value="Anexar" action="#{atendimentoBean.cadastrar()}" styleClass="btnsFormCad"/>
+                <h:commandButton value="Voltar" action="/atendimento" immediate="true" styleClass="btnsFormCad"/>
+            </h:panelGrid>
+            
+            
+                
+        </h:form>
+    </ui:define>
+
+</ui:composition>

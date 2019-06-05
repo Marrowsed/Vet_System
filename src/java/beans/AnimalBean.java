@@ -71,7 +71,7 @@ public class AnimalBean implements Serializable {
         AnimalDAO adao = new AnimalDAO();
         adao.adicionar(animal);
         animal = new Animal();
-        return "/animal";
+        return "/protected/animal";
     }
     
     public String consultar() throws SQLException {

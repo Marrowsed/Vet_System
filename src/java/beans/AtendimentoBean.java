@@ -81,7 +81,7 @@ public class AtendimentoBean implements Serializable {
         AtendimentoDAO atdao = new AtendimentoDAO();
         atdao.adicionar(atendimento);
         atendimento = new Atendimento();
-        return "/atendimento";
+        return "/protected/atendimento";
     }
     
     public String consultar() throws SQLException {
