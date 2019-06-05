@@ -11,7 +11,7 @@
             <h:inputText value="#{clienteBean.cliente.nome}" p:placeholder="nome cliente" id="nome"/>
             <h:commandButton value="Consultar" action="#{clienteBean.consultar()}" styleClass="btnConsultar"/>
 
-            <h:dataTable value="#{lista.clientes}" var="c"          
+            <h:dataTable value="#{listaCliente.clientes}" var="c"          
                          styleClass="tabela" captionClass="tabelaCaption" 
                          headerClass="tabelaHeader" 
                          rowClasses="linhaPar, linhaImpar">
