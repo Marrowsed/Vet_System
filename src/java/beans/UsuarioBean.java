@@ -36,7 +36,7 @@ public class UsuarioBean implements Serializable {
             System.out.println("Usuario logado: " + usuario);
             SessionContext session = SessionContext.getInstance();
             session.setAttribute("usuario", usuario);
-            return "/homeLogado";
+            return "/protected/homeLogado";
         }
         FacesMessage message = new FacesMessage("Login/senha inválidos!");
         message.setSeverity(FacesMessage.SEVERITY_ERROR);
@@ -49,7 +49,7 @@ public class UsuarioBean implements Serializable {
         udao.adicionar(usuario);
         usuario = new Usuario();
         System.out.println("Usuario cadastrado: " + usuario);
-        return "/home";
+        return "/protected/home";
     }
     
 }

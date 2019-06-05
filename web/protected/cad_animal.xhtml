@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-                template="./_templateUserLogado.xhtml"
+                template="/_templateUserLogado.xhtml"
                 xmlns:h="http://xmlns.jcp.org/jsf/html"
                 xmlns:f="http://xmlns.jcp.org/jsf/core">
 
@@ -39,7 +39,7 @@
                 </h:panelGrid>
             <h:panelGrid columns="2" styleClass="opcFormCad">
                 <h:commandButton value="Cadastrar" action="#{animalBean.cadastrar()}" styleClass="btnsFormCad"/>
-                <h:commandButton value="Voltar" action="/home" immediate="true" styleClass="btnsFormCad"/>
+                <h:commandButton value="Voltar" action="/protected/home" immediate="true" styleClass="btnsFormCad"/>
             </h:panelGrid>
                 
             </h:form>           
