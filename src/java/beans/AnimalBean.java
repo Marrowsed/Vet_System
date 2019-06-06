@@ -84,7 +84,6 @@ public class AnimalBean implements Serializable {
     public void exluir(Animal a) throws SQLException {
         AnimalDAO adao = new AnimalDAO();
         adao.excluir(a.getId());        
-        animals.remove(a);
     }
     
     public List<SelectItem> getListaAnimais() throws SQLException {

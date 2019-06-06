@@ -13,8 +13,8 @@ import java.util.List;
 public class AnimalDAO implements DAO {
     private static final String SQL_INSERIR_ANIMAL = "insert into animals (nome, especie, raca, nascimento, cliente_id) values(?,?,?,?,?)";
     private static final String SQL_LISTAR_ANIMALS = "select * from animals as a left join clientes as c on a.cliente_id = a.id order by a.nome";
-    private static final String SQL_CONSULTAR_ANIMAL = "select * from animal where nome like ? order by nome";
-    private static final String SQL_EXCLUIR_ANIMAL = "delete from animal where id = ?";
+    private static final String SQL_CONSULTAR_ANIMAL = "select * from animals where nome like ? order by nome";
+    private static final String SQL_EXCLUIR_ANIMAL = "delete from animals where id = ?";
     private static final String SQL_ALTERAR_ANIMAL = "update animals set nome=?, especie=?, raca=?, nascimento=? where id=?";
     
     private Connection connection;
@@ -31,12 +31,7 @@ public class AnimalDAO implements DAO {
                 stmt.setString(3, animal.getRaca());
                 stmt.setDate(4, new java.sql.Date(animal.getNascimento().getTime()));
                 stmt.setLong(5, animal.getCliente().getId());
-                stmt.executeUpdate();
-                ResultSet rs = stmt.getGeneratedKeys();
-                if (rs != null && rs.next()) {                   
-                    animal.setId(rs.getLong(1));
-                    rs.close();
-                }
+                animal.setId(new Long(stmt.executeUpdate()));
                 stmt.close();
             } finally {
                 connection.close();

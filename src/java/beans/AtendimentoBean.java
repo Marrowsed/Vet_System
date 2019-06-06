@@ -18,7 +18,9 @@ public class AtendimentoBean implements Serializable {
 
     @Inject
     private Atendimento atendimento;
+    @Inject
     private Animal animal;
+    @Inject
     private Cliente cliente;
     private List<Atendimento> atendimentos;
     private List<Animal> animals;
@@ -77,7 +79,7 @@ public class AtendimentoBean implements Serializable {
     
     
     
-    public String cadastrar() throws SQLException {
+    public String adicionar() throws SQLException {
         AtendimentoDAO atdao = new AtendimentoDAO();
         atdao.adicionar(atendimento);
         atendimento = new Atendimento();
@@ -94,6 +96,5 @@ public class AtendimentoBean implements Serializable {
     public void exluir(Atendimento a) throws SQLException {
         AtendimentoDAO atdao = new AtendimentoDAO();
         atdao.excluir(a.getId());        
-        atendimentos.remove(a);
     }
 }

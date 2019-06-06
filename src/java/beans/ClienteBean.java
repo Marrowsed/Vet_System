@@ -56,7 +56,6 @@ public class ClienteBean implements Serializable {
     public void exluir(Cliente c) throws SQLException {
         ClienteDAO cdao = new ClienteDAO();
         cdao.excluir(c.getId());        
-        clientes.remove(c);
     }
     
     public List<SelectItem> getListaClientes() throws SQLException {

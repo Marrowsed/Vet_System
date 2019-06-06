@@ -1,7 +1,6 @@
 package model;
 
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -13,9 +12,9 @@ import java.util.List;
 public class AtendimentoDAO implements DAO {
     private static final String SQL_INSERIR_ATENDIMENTO = "insert into atendimentos (data, observacao, cliente_id, animal_id) values(?,?,?,?)";
     private static final String SQL_LISTAR_ATENDIMENTOS = "select * from atendimentos order by data";
-    private static final String SQL_CONSULTAR_ATENDIMENTO = "select * from atendimento where data like ? order by data";
-    private static final String SQL_EXCLUIR_ATENDIMENTO = "delete from atendimento where id = ?";
-    private static final String SQL_ALTERAR_ATENDIMENTO = "update animals set data=?, observacao=? where id=?";
+    private static final String SQL_CONSULTAR_ATENDIMENTO = "select * from atendimentos where data like ? order by data";
+    private static final String SQL_EXCLUIR_ATENDIMENTO = "delete from atendimentos where id = ?";
+    private static final String SQL_ALTERAR_ATENDIMENTO = "update atendimentos set data=?, observacao=? where id=?";
     
     private Connection connection;
 
@@ -30,12 +29,7 @@ public class AtendimentoDAO implements DAO {
                 stmt.setString(2, atendimento.getObservacao());
                 stmt.setLong(3, atendimento.getCliente().getId());
                 stmt.setLong(4, atendimento.getAnimal().getId());
-                stmt.executeUpdate();
-                ResultSet rs = stmt.getGeneratedKeys();
-                if (rs != null && rs.next()) {                   
-                    atendimento.setId(rs.getLong(1));
-                    rs.close();
-                }
+                atendimento.setId(new Long(stmt.executeUpdate()));
                 stmt.close();
             } finally {
                 connection.close();

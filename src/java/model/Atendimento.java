@@ -3,6 +3,7 @@ package model;
 import java.io.Serializable;
 import java.util.Date;
 import javax.enterprise.context.Dependent;
+import javax.inject.Inject;
 import javax.validation.constraints.Future;
 
 
@@ -13,7 +14,9 @@ public class Atendimento implements Serializable {
     @Future
     private Date data;
     private String observacao;
+    @Inject
     private Cliente cliente;
+    @Inject
     private Animal animal;
 
     public Atendimento() {

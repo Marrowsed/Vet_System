@@ -17,13 +17,13 @@
                     </h:inputText>
                     <h:message for="data" styleClass="erro"/>
                     
-                    <h:selectOneMenu id="clientes" value="#{animalBean.cliente.id}" >
+                    <h:selectOneMenu id="cliente" value="#{animalBean.cliente.id}" >
                         <f:selectItem itemLabel="Selecione um cliente" itemValue="" noSelectionOption="true" />
                         <f:selectItems value="#{clienteBean.listaClientes}"  />
                         <f:ajax render="animais" listener="#{animalBean.habilita}"/>
                     </h:selectOneMenu>
                     
-                    <h:selectOneMenu id="animais" value="#{animalBean.animal.id}" 
+                    <h:selectOneMenu id="animal" value="#{animalBean.animal.id}" 
                                      disabled="#{animalBean.listaAnimaisDesabilitado}">
                         <f:selectItem itemLabel="Selecione o animal" itemValue="" noSelectionOption="true" />
                         <f:selectItems value="#{animalBean.listaAnimais}"/>
@@ -37,7 +37,7 @@
             </h:panelGrid>
             
             <h:panelGrid columns="2" styleClass="opcFormCad">
-                <h:commandButton value="Anexar" action="#{atendimentoBean.cadastrar()}" styleClass="btnsFormCad"/>
+                <h:commandButton value="Anexar" action="#{atendimentoBean.adicionar()}" styleClass="btnsFormCad"/>
                 <h:commandButton value="Voltar" action="/protected/atendimento" immediate="true" styleClass="btnsFormCad"/>
             </h:panelGrid>
             
