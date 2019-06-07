@@ -11,7 +11,6 @@ import javax.inject.Inject;
 import model.Cliente;
 import model.ClienteDAO;
 
-
 @Named(value = "clienteBean")
 @SessionScoped
 public class ClienteBean implements Serializable {
@@ -20,7 +19,12 @@ public class ClienteBean implements Serializable {
     private Cliente cliente;
     private List<Cliente> clientes;
 
-    public ClienteBean() {
+    public ClienteBean() throws SQLException {
+        clientes = new ArrayList<>();
+        ClienteDAO cdao = new ClienteDAO();
+        for (Object o : cdao.listar()) {
+            clientes.add((Cliente) o);
+        }
     }
 
     public Cliente getCliente() {
@@ -30,7 +34,7 @@ public class ClienteBean implements Serializable {
     public void setUsuario(Cliente cliente) {
         this.cliente = cliente;
     }
-    
+
     public List<Cliente> getClientes() {
         return clientes;
     }
@@ -38,26 +42,32 @@ public class ClienteBean implements Serializable {
     public void setClientes(List<Cliente> clientes) {
         this.clientes = clientes;
     }
-    
+
     public String cadastrar() throws SQLException {
         ClienteDAO cdao = new ClienteDAO();
         cdao.adicionar(cliente);
+        clientes = new ArrayList<>();
+        for (Object o : cdao.listar()){
+            clientes.add((Cliente) o);
+        }
         cliente = new Cliente();
-        return "/proteced/cliente";
+        return "/protected/cliente";
     }
-    
+
     public String consultar() throws SQLException {
         ClienteDAO cdao = new ClienteDAO();
-        for (Object o : cdao.consultar(cliente.getNome()))
+        for (Object o : cdao.consultar(cliente.getNome())) {
             clientes.add((Cliente) o);
+        }
         return null;
     }
- 
+
     public void exluir(Cliente c) throws SQLException {
         ClienteDAO cdao = new ClienteDAO();
-        cdao.excluir(c.getId());        
+        cdao.excluir(c.getId());
+        clientes.remove(c);
     }
-    
+
     public List<SelectItem> getListaClientes() throws SQLException {
         List<SelectItem> lista = new ArrayList<>();
         ClienteDAO cdao = new ClienteDAO();
@@ -67,5 +77,5 @@ public class ClienteBean implements Serializable {
         }
         return lista;
     }
-    
+
 }

@@ -20,7 +20,10 @@
                     <h:graphicImage library="imagens" 
                                 name="logo.png" styleClass="center_block"/>
                     <h:outputText value="Olá, #{usuarioBean.usuario.nome}" styleClass="saudacaoTop"/>
-                    <h:form><h:commandLink value="Sair" action="/index" styleClass="linkMenu"/></h:form>
+                    <h:form>
+                        <h:commandButton value="Sair" action="#{usuarioBean.sair()}" styleClass="btnsFormCad"/>
+                    </h:form>
+                    
                 </h:panelGrid>
             </ui:insert>
         </div>

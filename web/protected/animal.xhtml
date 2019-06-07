@@ -11,7 +11,7 @@
             <h:inputText value="#{animalBean.animal.nome}" p:placeholder="Nome do animal" id="nome"/>
             <h:commandButton value="Consultar" action="#{animalBean.consultar()}" styleClass="btnConsultar"/>
 
-            <h:dataTable value="#{listaAnimal.animals}" var="a"  
+            <h:dataTable value="#{animalBean.animals}" var="a"  
                          styleClass="tabela" captionClass="tabelaCaption" 
                          headerClass="tabelaHeader" 
                          rowClasses="linhaPar, linhaImpar">
@@ -28,7 +28,7 @@
                 
                 <h:column>
                     <f:facet name="header">Cliente</f:facet>
-                    <h:outputText value="#{a.cliente.id}"/>
+                    <h:outputText value="#{a.cliente.nome}"/>
                 </h:column>
                 
                 <h:column>

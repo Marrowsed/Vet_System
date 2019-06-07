@@ -1,7 +1,6 @@
 package model;
 
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -12,7 +11,7 @@ import java.util.List;
 
 public class AnimalDAO implements DAO {
     private static final String SQL_INSERIR_ANIMAL = "insert into animals (nome, especie, raca, nascimento, cliente_id) values(?,?,?,?,?)";
-    private static final String SQL_LISTAR_ANIMALS = "select * from animals as a left join clientes as c on a.cliente_id = a.id order by a.nome";
+    private static final String SQL_LISTAR_ANIMALS = "select a.id, a.nome, a.especie, a.raca, a.nascimento, c.id, c.nome from animals as a left join clientes as c on a.cliente_id = c.id order by a.nome";
     private static final String SQL_CONSULTAR_ANIMAL = "select * from animals where nome like ? order by nome";
     private static final String SQL_EXCLUIR_ANIMAL = "delete from animals where id = ?";
     private static final String SQL_ALTERAR_ANIMAL = "update animals set nome=?, especie=?, raca=?, nascimento=? where id=?";
@@ -31,7 +30,12 @@ public class AnimalDAO implements DAO {
                 stmt.setString(3, animal.getRaca());
                 stmt.setDate(4, new java.sql.Date(animal.getNascimento().getTime()));
                 stmt.setLong(5, animal.getCliente().getId());
-                animal.setId(new Long(stmt.executeUpdate()));
+                stmt.executeUpdate();
+                ResultSet rs = stmt.getGeneratedKeys();
+                if (rs != null && rs.next()) {                   
+                    animal.setId(rs.getLong(1));
+                    rs.close();
+                }
                 stmt.close();
             } finally {
                 connection.close();
@@ -39,7 +43,7 @@ public class AnimalDAO implements DAO {
         } catch (SQLException ex) {
             throw ex;
         }        
-        return obj;
+        return animal;
     }
 
     @Override
@@ -59,7 +63,9 @@ public class AnimalDAO implements DAO {
                     a.setRaca(rs.getString("raca"));
                     a.setNascimento(rs.getDate("nascimento"));
                     a.setCliente(new Cliente());
-                    a.getCliente().setId(rs.getLong("cliente_id"));
+                    a.getCliente().setId(rs.getLong(6));
+                    a.getCliente().setNome(rs.getString(7));
+                    System.out.println(a.getCliente().getNome());
                     animals.add(a);
                 }
                 stmt.close();

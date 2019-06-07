@@ -29,7 +29,12 @@ public class UsuarioDAO implements DAO {
                 stmt.setString(1, usuario.getNome());
                 stmt.setString(2, usuario.getLogin());
                 stmt.setString(3, usuario.getSenha());
-                usuario.setId(new Long(stmt.executeUpdate()));
+                stmt.executeUpdate();
+                ResultSet rs = stmt.getGeneratedKeys();
+                if (rs != null && rs.next()) {                   
+                    usuario.setId(rs.getLong(1));
+                    rs.close();
+                }
                 stmt.close();
             } finally {
                 connection.close();

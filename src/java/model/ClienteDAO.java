@@ -30,7 +30,12 @@ public class ClienteDAO implements DAO {
                 stmt.setString(3, cliente.getEndereco());
                 stmt.setString(4, cliente.getTelefone());
                 stmt.setString(5, cliente.getEmail());
-                cliente.setId(new Long(stmt.executeUpdate()));
+                stmt.executeUpdate();
+                ResultSet rs = stmt.getGeneratedKeys();
+                if (rs != null && rs.next()) {                   
+                    cliente.setId(rs.getLong(1));
+                    rs.close();
+                }
                 stmt.close();
             } finally {
                 connection.close();

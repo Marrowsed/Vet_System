@@ -49,7 +49,13 @@ public class UsuarioBean implements Serializable {
         udao.adicionar(usuario);
         usuario = new Usuario();
         System.out.println("Usuario cadastrado: " + usuario);
-        return "/protected/home";
+        return "/protected/homeLogado";
+    }
+    
+    public String sair() {
+        SessionContext session = SessionContext.getInstance();
+        session.encerrarSessao();
+        return "/home";
     }
     
 }

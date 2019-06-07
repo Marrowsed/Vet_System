@@ -13,8 +13,6 @@ import model.Animal;
 import model.AnimalDAO;
 import model.Cliente;
 
-
-
 @Named(value = "animalBean")
 @SessionScoped
 public class AnimalBean implements Serializable {
@@ -25,10 +23,13 @@ public class AnimalBean implements Serializable {
     private Cliente cliente;
     private List<Animal> animals;
     private List<Cliente> clientes;
-    private boolean ListaAnimaisDesabilitado;
 
-    public AnimalBean() {
-        ListaAnimaisDesabilitado = true;
+    public AnimalBean() throws SQLException {
+        animals = new ArrayList<>();
+        AnimalDAO adao = new AnimalDAO();
+        for (Object o : adao.listar()) {
+            animals.add((Animal) o);
+        }
     }
 
     public Animal getAnimal() {
@@ -63,45 +64,42 @@ public class AnimalBean implements Serializable {
         this.clientes = clientes;
     }
 
-    public void setListaAnimaisDesabilitado(boolean ListaAnimaisDesabilitado) {
-        this.ListaAnimaisDesabilitado = ListaAnimaisDesabilitado;
-    }
-    
     public String cadastrar() throws SQLException {
         AnimalDAO adao = new AnimalDAO();
+        animal.setCliente(new Cliente());
+        animal.getCliente().setId(cliente.getId());
         adao.adicionar(animal);
+        animals = new ArrayList<>();
+        for (Object o : adao.listar()) {
+            animals.add((Animal) o);
+        }
         animal = new Animal();
         return "/protected/animal";
     }
-    
+
     public String consultar() throws SQLException {
         AnimalDAO adao = new AnimalDAO();
-        for (Object o : adao.consultar(animal.getNome()))
+        for (Object o : adao.consultar(animal.getNome())) {
             animals.add((Animal) o);
+        }
         return null;
     }
-    
+
     public void exluir(Animal a) throws SQLException {
         AnimalDAO adao = new AnimalDAO();
-        adao.excluir(a.getId());        
+        adao.excluir(a.getId());
+        animals.remove(a);
     }
-    
-    public List<SelectItem> getListaAnimais() throws SQLException {
+
+   /* public List<SelectItem> getListaAnimais() throws SQLException {
         List<SelectItem> lista = new ArrayList<>();
         AnimalDAO adao = new AnimalDAO();
         for (Object o : adao.listar()) {
             Animal a = (Animal) o;
-            if (Objects.equals(a.getCliente().getId(), cliente.getId()))
+            if (Objects.equals(a.getCliente().getId(), cliente.getId())) {
                 lista.add(new SelectItem(a.getId(), a.getNome()));
+            }
         }
         return lista;
-    }
-    
-    public boolean isListaAnimaisDesabilitado() {
-        return ListaAnimaisDesabilitado;
-    }
-
-    public void habilita() {
-        ListaAnimaisDesabilitado = false;
-    }
+    }*/
 }

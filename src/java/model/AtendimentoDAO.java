@@ -11,7 +11,7 @@ import java.util.List;
 
 public class AtendimentoDAO implements DAO {
     private static final String SQL_INSERIR_ATENDIMENTO = "insert into atendimentos (data, observacao, cliente_id, animal_id) values(?,?,?,?)";
-    private static final String SQL_LISTAR_ATENDIMENTOS = "select * from atendimentos order by data";
+    private static final String SQL_LISTAR_ATENDIMENTOS = "select * from atendimentos order by data"; //2 JOINS
     private static final String SQL_CONSULTAR_ATENDIMENTO = "select * from atendimentos where data like ? order by data";
     private static final String SQL_EXCLUIR_ATENDIMENTO = "delete from atendimentos where id = ?";
     private static final String SQL_ALTERAR_ATENDIMENTO = "update atendimentos set data=?, observacao=? where id=?";
@@ -27,9 +27,15 @@ public class AtendimentoDAO implements DAO {
                 PreparedStatement stmt = connection.prepareStatement(SQL_INSERIR_ATENDIMENTO, Statement.RETURN_GENERATED_KEYS);
                 stmt.setDate(1, new java.sql.Date(atendimento.getData().getTime()));
                 stmt.setString(2, atendimento.getObservacao());
+                System.out.println(atendimento.getCliente());
                 stmt.setLong(3, atendimento.getCliente().getId());
                 stmt.setLong(4, atendimento.getAnimal().getId());
-                atendimento.setId(new Long(stmt.executeUpdate()));
+                stmt.executeUpdate();
+                ResultSet rs = stmt.getGeneratedKeys();
+                if (rs != null && rs.next()) {                   
+                    atendimento.setId(rs.getLong(1));
+                    rs.close();
+                }
                 stmt.close();
             } finally {
                 connection.close();
@@ -54,6 +60,10 @@ public class AtendimentoDAO implements DAO {
                     at.setId(rs.getLong("id"));
                     at.setData(rs.getDate("data"));
                     at.setObservacao(rs.getString("observacao"));
+                    at.setCliente(new Cliente());
+                    at.getCliente().setId(rs.getLong("cliente_id"));
+                    at.setAnimal(new Animal());
+                    at.getAnimal().setId(rs.getLong("animal_id"));
                     atendimentos.add(at);
                 }
                 stmt.close();
@@ -82,6 +92,10 @@ public class AtendimentoDAO implements DAO {
                     at.setId(rs.getLong("id"));
                     at.setData(rs.getDate("data"));
                     at.setObservacao(rs.getString("observacao"));
+                    at.setCliente(new Cliente());
+                    at.getCliente().setId(rs.getLong("cliente_id"));
+                    at.setAnimal(new Animal());
+                    at.getAnimal().setId(rs.getLong("animal_id"));
                     atendimentos.add(at);
                 }
                 stmt.close();

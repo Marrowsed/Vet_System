@@ -14,7 +14,7 @@
                     <h:message for="nome" styleClass="erro"/>
                     
                     <h:outputLabel value="Selecione o cliente" for="cliente" styleClass="outputs" />
-                    <h:selectOneMenu id="clientes" value="#{animalBean.animal.cliente.id}" >
+                    <h:selectOneMenu id="clientes" value="#{animalBean.cliente.id}" >
                         <f:selectItem itemLabel="Selecione um cliente" itemValue="" noSelectionOption="true" />
                         <f:selectItems value="#{clienteBean.listaClientes}"  />
                     </h:selectOneMenu>

@@ -17,16 +17,16 @@
                     </h:inputText>
                     <h:message for="data" styleClass="erro"/>
                     
-                    <h:selectOneMenu id="cliente" value="#{animalBean.cliente.id}" >
+                    <h:selectOneMenu id="cliente" value="#{atendimentoBean.cliente.id}" >
                         <f:selectItem itemLabel="Selecione um cliente" itemValue="" noSelectionOption="true" />
                         <f:selectItems value="#{clienteBean.listaClientes}"  />
-                        <f:ajax render="animais" listener="#{animalBean.habilita}"/>
+                        <f:ajax render="animais" listener="#{atendimentoBean.habilita}"/>
                     </h:selectOneMenu>
                     
-                    <h:selectOneMenu id="animal" value="#{animalBean.animal.id}" 
-                                     disabled="#{animalBean.listaAnimaisDesabilitado}">
+                    <h:selectOneMenu id="animais" value="#{atendimentoBean.animal.id}" 
+                                     disabled="#{atendimentoBean.listaAnimaisDesabilitado}">
                         <f:selectItem itemLabel="Selecione o animal" itemValue="" noSelectionOption="true" />
-                        <f:selectItems value="#{animalBean.listaAnimais}"/>
+                        <f:selectItems value="#{atendimentoBean.listaAnimais}"/>
                     </h:selectOneMenu>
                     
                     <h:outputLabel value="Observações" for="obs" styleClass="outputs"/>
