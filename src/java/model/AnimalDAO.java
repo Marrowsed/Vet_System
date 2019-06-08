@@ -65,7 +65,6 @@ public class AnimalDAO implements DAO {
                     a.setCliente(new Cliente());
                     a.getCliente().setId(rs.getLong(6));
                     a.getCliente().setNome(rs.getString(7));
-                    System.out.println(a.getCliente().getNome());
                     animals.add(a);
                 }
                 stmt.close();
@@ -96,6 +95,9 @@ public class AnimalDAO implements DAO {
                     a.setEspecie(rs.getString("especie"));
                     a.setRaca(rs.getString("raca"));
                     a.setNascimento(rs.getDate("nascimento"));
+                    a.setCliente(new Cliente());
+                    a.getCliente().setId(rs.getLong(6));
+                    a.getCliente().setNome(rs.getString(7));
                     animals.add(a);
                 }
                 stmt.close();

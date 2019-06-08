@@ -11,7 +11,10 @@ import java.util.List;
 
 public class AtendimentoDAO implements DAO {
     private static final String SQL_INSERIR_ATENDIMENTO = "insert into atendimentos (data, observacao, cliente_id, animal_id) values(?,?,?,?)";
-    private static final String SQL_LISTAR_ATENDIMENTOS = "select * from atendimentos order by data"; //2 JOINS
+    private static final String SQL_LISTAR_ATENDIMENTOS = "select at.id, at.data, at.observacao, a.id, a.nome, c.id, c.nome \n" +
+        "from atendimentos as at \n" +
+        "left join clientes as c on at.cliente_id = c.id order by c.nome\n" +
+        "left join animals as a on at.animal_id = a.id order by a.nome\n";
     private static final String SQL_CONSULTAR_ATENDIMENTO = "select * from atendimentos where data like ? order by data";
     private static final String SQL_EXCLUIR_ATENDIMENTO = "delete from atendimentos where id = ?";
     private static final String SQL_ALTERAR_ATENDIMENTO = "update atendimentos set data=?, observacao=? where id=?";

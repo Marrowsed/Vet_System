@@ -6,8 +6,6 @@ import java.io.Serializable;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
-import javax.faces.model.SelectItem;
 import javax.inject.Inject;
 import model.Animal;
 import model.AnimalDAO;
@@ -91,15 +89,4 @@ public class AnimalBean implements Serializable {
         animals.remove(a);
     }
 
-   /* public List<SelectItem> getListaAnimais() throws SQLException {
-        List<SelectItem> lista = new ArrayList<>();
-        AnimalDAO adao = new AnimalDAO();
-        for (Object o : adao.listar()) {
-            Animal a = (Animal) o;
-            if (Objects.equals(a.getCliente().getId(), cliente.getId())) {
-                lista.add(new SelectItem(a.getId(), a.getNome()));
-            }
-        }
-        return lista;
-    }*/
 }
