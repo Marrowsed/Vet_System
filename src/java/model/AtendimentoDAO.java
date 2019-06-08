@@ -11,9 +11,9 @@ import java.util.List;
 
 public class AtendimentoDAO implements DAO {
     private static final String SQL_INSERIR_ATENDIMENTO = "insert into atendimentos (data, observacao, cliente_id, animal_id) values(?,?,?,?)";
-    private static final String SQL_LISTAR_ATENDIMENTOS = "select at.id, at.data, at.observacao, a.id, a.nome, c.id, c.nome \n" +
+    private static final String SQL_LISTAR_ATENDIMENTOS = "select at.id, at.data, at.observacao, c.id, c.nome, a.id, a.nome \n" +
         "from atendimentos as at \n" +
-        "left join clientes as c on at.cliente_id = c.id order by c.nome\n" +
+        "left join clientes as c on at.cliente_id = c.id  \n " +  
         "left join animals as a on at.animal_id = a.id order by a.nome\n";
     private static final String SQL_CONSULTAR_ATENDIMENTO = "select * from atendimentos where data like ? order by data";
     private static final String SQL_EXCLUIR_ATENDIMENTO = "delete from atendimentos where id = ?";
@@ -64,9 +64,11 @@ public class AtendimentoDAO implements DAO {
                     at.setData(rs.getDate("data"));
                     at.setObservacao(rs.getString("observacao"));
                     at.setCliente(new Cliente());
-                    at.getCliente().setId(rs.getLong("cliente_id"));
+                    at.getCliente().setId(rs.getLong(4));
+                    at.getCliente().setNome(rs.getString(5));
                     at.setAnimal(new Animal());
-                    at.getAnimal().setId(rs.getLong("animal_id"));
+                    at.getAnimal().setId(rs.getLong(6));
+                    at.getAnimal().setNome(rs.getString(7));
                     atendimentos.add(at);
                 }
                 stmt.close();
@@ -96,9 +98,12 @@ public class AtendimentoDAO implements DAO {
                     at.setData(rs.getDate("data"));
                     at.setObservacao(rs.getString("observacao"));
                     at.setCliente(new Cliente());
-                    at.getCliente().setId(rs.getLong("cliente_id"));
+                    at.setCliente(new Cliente());
+                    at.getCliente().setId(rs.getLong(4));
+                    at.getCliente().setNome(rs.getString(5));
                     at.setAnimal(new Animal());
-                    at.getAnimal().setId(rs.getLong("animal_id"));
+                    at.getAnimal().setId(rs.getLong(6));
+                    at.getAnimal().setNome(rs.getString(7));
                     atendimentos.add(at);
                 }
                 stmt.close();
@@ -138,6 +143,7 @@ public class AtendimentoDAO implements DAO {
                 PreparedStatement stmt = connection.prepareStatement(SQL_ALTERAR_ATENDIMENTO);
                 stmt.setDate(1, new java.sql.Date(atendimento.getData().getTime()));
                 stmt.setString(2, atendimento.getObservacao());
+                stmt.setLong(3, atendimento.getId());
                 stmt.execute();
                 stmt.close();
             } finally {

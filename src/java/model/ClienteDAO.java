@@ -137,6 +137,7 @@ public class ClienteDAO implements DAO {
                 stmt.setString(3, cliente.getEndereco());
                 stmt.setString(4, cliente.getTelefone());
                 stmt.setString(5, cliente.getEmail());
+                stmt.setLong(6, cliente.getId());
                 stmt.execute();
                 stmt.close();
             } finally {

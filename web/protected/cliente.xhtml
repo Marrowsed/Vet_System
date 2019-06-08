@@ -18,7 +18,7 @@
                 <f:facet name="caption">Clientes</f:facet>
                 <h:column>
                     <f:facet name="header">Id</f:facet>
-                    <h:commandLink value="#{c.id}"/>                
+                    <h:commandLink value="#{c.id}" action="#{clienteBean.pag_alterar(c)}"/>                
                 </h:column>
                 
                 <h:column>

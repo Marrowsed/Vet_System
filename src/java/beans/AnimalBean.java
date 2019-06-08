@@ -88,5 +88,22 @@ public class AnimalBean implements Serializable {
         adao.excluir(a.getId());
         animals.remove(a);
     }
+    
+    public String pag_alterar(Animal a) {
+        animal = a;
+        return "/protected/alterar_animal";
+    }
+    
+    public String alterar() throws SQLException {
+        AnimalDAO adao = new AnimalDAO();
+        adao.alterar(animal);        
+        animal = new Animal();
+        return "/protected/animal";
+    }
+
+    public String cancelar() {
+        animal = new Animal();
+        return "/protected/animal";
+    }
 
 }

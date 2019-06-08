@@ -19,6 +19,11 @@
                 <f:facet name="caption">Atendimento</f:facet>
                 
                 <h:column>
+                    <f:facet name="header">Id</f:facet>
+                    <h:commandLink value="#{atd.id}" action="#{atendimentoBean.pag_alterar(atd)}"/>   
+                </h:column>
+                
+                <h:column>
                     <f:facet name="header">Data</f:facet>
                     <h:outputText value="#{atd.data}">
                         <f:convertDateTime type="date" pattern="dd/MM/yyyy" timeZone="GMT-3"/>

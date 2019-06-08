@@ -77,5 +77,22 @@ public class ClienteBean implements Serializable {
         }
         return lista;
     }
+    
+    public String pag_alterar(Cliente c) {
+        cliente = c;
+        return "/protected/alterar_cliente";
+    }
+    
+    public String alterar() throws SQLException {
+        ClienteDAO cdao = new ClienteDAO();
+        cdao.alterar(cliente);        
+        cliente = new Cliente();
+        return "/protected/cliente";
+    }
+
+    public String cancelar() {
+        cliente = new Cliente();
+        return "/protected/cliente";
+    }
 
 }

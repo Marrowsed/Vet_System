@@ -142,4 +142,21 @@ public class AtendimentoBean implements Serializable {
         }
         return lista;
     }
+     
+     public String pag_alterar(Atendimento atd) {
+        atendimento = atd;
+        return "/protected/alterar_atendimento";
+    }
+     
+     public String alterar() throws SQLException {
+        AtendimentoDAO atdao = new AtendimentoDAO();
+        atdao.alterar(atendimento);        
+        atendimento = new Atendimento();
+        return "/protected/atendimento";
+    }
+
+    public String cancelar() {
+        atendimento = new Atendimento();
+        return "/protected/atendimento";
+    }
 }

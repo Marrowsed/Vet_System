@@ -139,6 +139,7 @@ public class AnimalDAO implements DAO {
                 stmt.setString(2, animal.getEspecie());
                 stmt.setString(3, animal.getRaca());
                 stmt.setDate(4, new java.sql.Date(animal.getNascimento().getTime()));
+                stmt.setLong(5, animal.getId());
                 stmt.execute();
                 stmt.close();
             } finally {
