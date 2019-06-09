@@ -9,8 +9,8 @@
     <ui:define name="content">
         <h:form>
             
-            <h:inputText value="#{animalBean.animal.nome}" p:placeholder="nome animal" id="nome"/>
-            <h:commandButton value="Consultar" action="#{animalBean.consultar()}" styleClass="btnConsultar"/>
+            <h:inputText value="#{atendimentoBean.animal.nome}" p:placeholder="nome animal" id="nome"/>
+            <h:commandButton value="Consultar" action="#{atendimentoBean.consultar()}" styleClass="btnConsultar"/>
       
             <h:dataTable value="#{atendimentoBean.atendimentos}" var="atd"          
                          styleClass="tabela" captionClass="tabelaCaption" 

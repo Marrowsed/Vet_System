@@ -99,9 +99,6 @@ public class AtendimentoBean implements Serializable {
         AtendimentoDAO atdao = new AtendimentoDAO();
         atendimento.setAnimal(new Animal());
         atendimento.setCliente(new Cliente());
-        System.out.println("Cliente Id: " + cliente.getId());
-        System.out.println("Animal Id: " + animal.getId());
-
         atendimento.getCliente().setId(cliente.getId());
         atendimento.getAnimal().setId(animal.getId());
         atdao.adicionar(atendimento);
